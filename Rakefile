@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ruby_bittorrent"
   gem.homepage = "http://github.com/pr0d1r2/ruby_bittorrent"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby bittorrent download cli.}
+  gem.description = %Q{Ruby bittorrent download cli.}
   gem.email = "pr0d1r2@gmail.com"
   gem.authors = ["Marcin Nowicki"]
   # dependencies defined in Gemfile
