@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/bit_torrent.rb",
     "lib/ruby_bittorrent.rb",
+    "ruby_bittorrent.gemspec",
     "spec/bit_torrent_spec.rb",
     "spec/spec_helper.rb",
     "test/helper.rb",
