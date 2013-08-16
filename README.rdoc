@@ -2,6 +2,10 @@
 
 Ruby bittorrent download cli.
 
+= requirements
+Installed aria2 package in system (with bittorrent support).
+
+
 == Contributing to ruby_bittorrent
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
