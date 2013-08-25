@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ruby_bittorrent"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcin Nowicki"]
-  s.date = "2013-08-16"
+  s.date = "2013-08-25"
   s.description = "Ruby bittorrent download cli."
   s.email = "pr0d1r2@gmail.com"
   s.extra_rdoc_files = [
