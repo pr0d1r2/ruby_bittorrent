@@ -20,6 +20,20 @@ BITTORRENT_OPTIONS = {
   :destination_directory => "#{ENV['HOME']}/Downloads"
 }
 
+= tor support
+
+Use this options to get your traffic gone through tor proxy at 127.0.0.1:9050:
+
+BITTORRENT_OPTIONS = {
+  :use_tor_proxy => true
+}
+
+Use this options to get your traffic gone through custom tor proxy:
+
+BITTORRENT_OPTIONS = {
+  :use_tor_proxy => '8.8.8.8:9050'
+}
+
 BitTorrent.download!(manget_link, BITTORRENT_OPTIONS)
 
 == Contributing to ruby_bittorrent
