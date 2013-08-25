@@ -6,6 +6,7 @@ class BitTorrent
   DEFAULTS = {
     :upload_rate_limit => 0,
     :seed_ratio => 1.5,
+    :seed_time => 1440, # minutes
     :connect_timeout => 60,
     :timeout => 60,
     :stop_timeout => 0,
@@ -51,6 +52,7 @@ class BitTorrent
         '--enable-peer-exchange=true',
         "--max-overall-upload-limit=#{upload_rate_limit}",
         "--seed-ratio=#{seed_ratio}",
+        "--seed-time=#{seed_time}",
         "--bt-tracker-connect-timeout=#{connect_timeout}",
         "--bt-tracker-timeout=#{timeout}",
         "--bt-stop-timeout=#{stop_timeout}",
