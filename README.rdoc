@@ -5,6 +5,20 @@ Ruby bittorrent download cli.
 = requirements
 Installed aria2 package in system (with bittorrent support).
 
+= example usage (full possible options included)
+require 'ruby_bittorrent'
+
+manget_link = 'magnet:?xt=urn:btih:whatever'
+BITTORRENT_OPTIONS = {
+  :upload_rate_limit => '100K',
+  :seed_ratio => 2.5,
+  :seed_time => 2880, # minutes
+  :connect_timeout => 120,
+  :timeout => 120,
+  :stop_timeout => 0,
+  :destination_directory => "#{ENV['HOME']}/Downloads"
+}
+BitTorrent.download!(manget_link, BITTORRENT_OPTIONS)
 
 == Contributing to ruby_bittorrent
  
