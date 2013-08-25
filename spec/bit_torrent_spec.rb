@@ -77,6 +77,22 @@ describe BitTorrent do
       its(:download_commmand) { should == "aria2c --dir=/tmp --bt-enable-lpd --bt-min-crypto-level=arc4 --bt-require-crypto=true --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=0 --seed-ratio=1.5 --seed-time=1440 --bt-tracker-connect-timeout=60 --bt-tracker-timeout=60 --bt-stop-timeout=0 '#{source}'" }
     end
 
+    context "when use default tor proxy" do
+      let(:options) { {:use_tor_proxy => true } }
+
+      its(:use_tor_proxy) { should == true }
+
+      its(:download_commmand) { should == "aria2c --dir=. --bt-enable-lpd --bt-min-crypto-level=arc4 --bt-require-crypto=true --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=0 --seed-ratio=1.5 --seed-time=1440 --bt-tracker-connect-timeout=60 --bt-tracker-timeout=60 --bt-stop-timeout=0 --all-proxy=127.0.0.1:9050 '#{source}'" }
+    end
+
+    context "when use custom tor proxy" do
+      let(:options) { {:use_tor_proxy => '8.8.8.8:9050' } }
+
+      its(:use_tor_proxy) { should == '8.8.8.8:9050' }
+
+      its(:download_commmand) { should == "aria2c --dir=. --bt-enable-lpd --bt-min-crypto-level=arc4 --bt-require-crypto=true --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=0 --seed-ratio=1.5 --seed-time=1440 --bt-tracker-connect-timeout=60 --bt-tracker-timeout=60 --bt-stop-timeout=0 --all-proxy=8.8.8.8:9050 '#{source}'" }
+    end
+
     context "when have 2 sources" do
       let(:source2) { "magnet:?xt=urn:btih:source2" }
       let(:sources) { [source, source2] }

@@ -10,6 +10,7 @@ class BitTorrent
     :connect_timeout => 60,
     :timeout => 60,
     :stop_timeout => 0,
+    :use_tor_proxy => false,
     :destination_directory => "."
   }
 
@@ -56,8 +57,19 @@ class BitTorrent
         "--bt-tracker-connect-timeout=#{connect_timeout}",
         "--bt-tracker-timeout=#{timeout}",
         "--bt-stop-timeout=#{stop_timeout}",
+        tor_proxy_options,
         sources.map { |s| "'#{s}'" }
-      ].flatten.join(' ')
+      ].flatten.compact.join(' ')
+    end
+
+    def tor_proxy_options
+      if use_tor_proxy
+        if use_tor_proxy.is_a?(String)
+          "--all-proxy=#{use_tor_proxy}"
+        else
+          '--all-proxy=127.0.0.1:9050'
+        end
+      end
     end
 
 end
