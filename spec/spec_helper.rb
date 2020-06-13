@@ -5,6 +5,7 @@ SimpleCov.minimum_coverage 100
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
+require 'rspec/its'
 require 'ruby_bittorrent'
 
 # Requires supporting files with custom matchers and macros, etc,

@@ -103,34 +103,34 @@ describe BitTorrent do
 
   describe ".download" do
     before do
-      the_object.stub(:download => true)
-      the_class.stub(:new => the_object)
+      allow(the_object).to receive(:download).and_return(true)
+      allow(the_class).to receive(:new).and_return(the_object)
     end
     after { the_class.download(source, options) }
 
     it "should create new instance" do
-      the_class.should_receive(:new).with(source, options)
+      expect(the_class).to receive(:new).with(source, options)
     end
 
     it "should call #download on new instance" do
-      the_object.should_receive(:download)
+      expect(the_object).to receive(:download)
     end
   end
 
   describe ".download!" do
     before do
-      the_object.stub(:download! => true)
-      the_class.stub(:new => the_object)
+      allow(the_object).to receive(:download!).and_return(true)
+      allow(the_class).to receive(:new).and_return(the_object)
     end
 
     after { the_class.download!(source, options) }
 
     it "should create new instance" do
-      the_class.should_receive(:new).with(source, options)
+      expect(the_class).to receive(:new).with(source, options)
     end
 
     it "should call #download on new instance" do
-      the_object.should_receive(:download!)
+      expect(the_object).to receive(:download!)
     end
   end
 
@@ -138,16 +138,16 @@ describe BitTorrent do
     after { the_object.download }
 
     it "should run download command in system" do
-      the_object.should_receive(:system).with("aria2c --dir=. --bt-enable-lpd --bt-min-crypto-level=arc4 --bt-require-crypto=true --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=0 --seed-ratio=1.5 --seed-time=1440 --bt-tracker-connect-timeout=60 --bt-tracker-timeout=60 --bt-stop-timeout=0 '#{source}'")
+      expect(the_object).to receive(:system).with("aria2c --dir=. --bt-enable-lpd --bt-min-crypto-level=arc4 --bt-require-crypto=true --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=0 --seed-ratio=1.5 --seed-time=1440 --bt-tracker-connect-timeout=60 --bt-tracker-timeout=60 --bt-stop-timeout=0 '#{source}'")
     end
   end
 
   describe "#download!" do
     let(:download_status) { true }
-    before { the_object.stub(:download => download_status) }
+    before { allow(the_object).to receive(:download).and_return(download_status) }
 
     it "should run download" do
-      the_object.should_receive(:download).and_return(true)
+      expect(the_object).to receive(:download).and_return(true)
       the_object.download!
     end
 
@@ -161,6 +161,5 @@ describe BitTorrent do
       }
     end
   end
-
 
 end
